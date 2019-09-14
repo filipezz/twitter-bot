@@ -1,5 +1,4 @@
 var {google} = require('googleapis');
-const keys = require('./keys.json')
 
 
 const dias = [
@@ -74,7 +73,7 @@ console.log('--------Twitando-------- ' + refeição+'\n----------------')
  
   var cron = require('node-cron');
  
- cron.schedule('45 01 * * *', function(){
+ cron.schedule('46 01 * * *', function(){
    
    tweetaCardapio(almoço)
 
