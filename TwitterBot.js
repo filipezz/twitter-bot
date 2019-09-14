@@ -1,5 +1,5 @@
 var {google} = require('googleapis');
-const keys = require('./keys.json')
+const keys = require('./gcpconfig.json')
 
 
 const dias = [
