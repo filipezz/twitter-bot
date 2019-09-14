@@ -73,17 +73,20 @@ console.log('--------Twitando-------- ' + refeição+'\n----------------')
  
   var cron = require('node-cron');
  
- cron.schedule('46 01 * * *', function(){
+ cron.schedule('1,2,3,4,5 * * * *', function(){
    
    tweetaCardapio(almoço)
 
-});
+},
+{timezone: "America/Sao_Paulo"}
+);
 
  cron.schedule('0 16 * * *', function(){
 
   tweetaCardapio(janta)
   
-  });
+  },
+  {timezone: "America/Sao_Paulo"});
  
   });
 })
