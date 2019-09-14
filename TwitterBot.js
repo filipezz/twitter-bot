@@ -68,14 +68,14 @@ if(err){
   console.log(err)
   return
 }
-console.log('--------Twitando-------- ' + refeição+'\n----------------')
+console.log('--------Twitando--------\n ' + refeição+'\n----------------')
 
  })}
  
  
   var cron = require('node-cron');
  
- cron.schedule('*/5 * * * *', function(){
+ cron.schedule('30 9 * * *', function(){
    
    tweetaCardapio(almoço)
 
