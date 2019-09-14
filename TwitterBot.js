@@ -49,7 +49,7 @@ authorize((authClient) => {
   var janta = 'Janta de '+diaSemana[n]+' '+date+'\n\nEntrada: '+response[8]+'\n\nPrincipal: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuarnição: '+response[11]+'\n\nAcompanhamento: '+response[12]+'\n\nSobremesa: '+response[13]+'\n\nRefresco: '+response[14]
 
 
-  const Twit = require('twit')
+const Twit = require('twit')
 
 
  var T = new Twit({
@@ -65,7 +65,8 @@ authorize((authClient) => {
  function tweetaCardapio(refeição){
  T.post('statuses/update', { status: refeição}, function(err, data, res) {
 if(err){
-  console.log(err)  
+  console.log(err)
+  return
 }
 console.log('--------Twitando-------- ' + refeição+'\n----------------')
 
@@ -74,7 +75,7 @@ console.log('--------Twitando-------- ' + refeição+'\n----------------')
  
   var cron = require('node-cron');
  
- cron.schedule('*/2 * * * *', function(){
+ cron.schedule('*/5 * * * *', function(){
    
    tweetaCardapio(almoço)
 
