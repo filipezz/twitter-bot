@@ -1,4 +1,5 @@
 var {google} = require('googleapis');
+const keys = require('./keys.json')
 
 
 const dias = [
@@ -44,8 +45,8 @@ authorize((authClient) => {
   var date = today.getDate()+'/0'+(today.getMonth()+1)
 
   
-  var almoço = 'Almoço de '+diaSemana[n]+''+date+'\n\nEntrada: '+response[0]+'\n\nPrincipal: '+response[1]+'\n\nVeg: '+response[2]+'\n\nGuarnição: '+response[3]+'\n\nAcompanhamento: '+response[4]+'\n\nSobremesa: '+response[5]+'\n\nRefresco: '+response[6]
-  var janta = 'Janta de '+diaSemana[n]+''+date+'\n\nEntrada: '+response[8]+'\n\nPrincipal: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuarnição: '+response[11]+'\n\nAcompanhamento: '+response[12]+'\n\nSobremesa: '+response[13]+'\n\nRefresco: '+response[14]
+  var almoço = 'Almoço de '+diaSemana[n]+' '+date+'\n\nEntrada: '+response[0]+'\n\nPrincipal: '+response[1]+'\n\nVeg: '+response[2]+'\n\nGuarnição: '+response[3]+'\n\nAcompanhamento: '+response[4]+'\n\nSobremesa: '+response[5]+'\n\nRefresco: '+response[6]
+  var janta = 'Janta de '+diaSemana[n]+' '+date+'\n\nEntrada: '+response[8]+'\n\nPrincipal: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuarnição: '+response[11]+'\n\nAcompanhamento: '+response[12]+'\n\nSobremesa: '+response[13]+'\n\nRefresco: '+response[14]
 
 
   const Twit = require('twit')
@@ -53,10 +54,10 @@ authorize((authClient) => {
 
  var T = new Twit({
    
-   consumer_key:         process.env.TWITTER_CONSUMER_KEY,
-   consumer_secret:      process.env.TWITTER_CONSUMER_SECRET,
-   access_token:         process.env.TWITTER_ACCESS_TOKEN,
-   access_token_secret:  process.env.TWITTER_ACCESS_TOKEN_SECRET,
+   consumer_key:         keys.twitter_consumer_key,
+   consumer_secret:      keys.twitter_consumer_secret,
+   access_token:         keys.twitter_access_token,
+   access_token_secret:  keys.twitter_access_token_secret,
    timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
    strictSSL:            true,     // optional - requires SSL certificates to be valid.
  })
@@ -73,7 +74,7 @@ console.log('--------Twitando-------- ' + refeição+'\n----------------')
  
   var cron = require('node-cron');
  
- cron.schedule('1,2,3,4,5 * * * *', function(){
+ cron.schedule('2,3 * * * *', function(){
    
    tweetaCardapio(almoço)
 
@@ -95,9 +96,9 @@ console.log('--------Twitando-------- ' + refeição+'\n----------------')
  function authorize(callback) {
   
   var authClient =  new google.auth.JWT(
-    process.env.CLIENT_EMAIL,
+    keys.client_email,
     null,
-    process.env.PRIVATE_KEY,
+    keys.private_key,
     ['https://www.googleapis.com/auth/drive.readonly']
       
   );
