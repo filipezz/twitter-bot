@@ -7,7 +7,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "node setup.js"
+    "preinstall": "npm install dotenv node setup.js "
   },
   "author": "",
   "license": "ISC",
