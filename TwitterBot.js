@@ -54,10 +54,10 @@ authorize((authClient) => {
 
  var T = new Twit({
    
-   consumer_key:         keys.twitter_consumer_key,
-   consumer_secret:      keys.twitter_consumer_secret,
-   access_token:         keys.twitter_access_token,
-   access_token_secret:  keys.twitter_access_token_secret,
+   consumer_key:         process.env.TWITTER_CONSUMER_KEY,
+   consumer_secret:      process.env.TWITTER_CONSUMER_SECRET,
+   access_token:         process.env.TWITTER_ACCESS_TOKEN,
+   access_token_secret:  process.env.TWITTER_ACCESS_TOKEN_SECRET,
    timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
    strictSSL:            true,     // optional - requires SSL certificates to be valid.
  })
@@ -74,7 +74,7 @@ console.log('--------Twitando-------- ' + refeição+'\n----------------')
  
   var cron = require('node-cron');
  
- cron.schedule('30 9 * * *', function(){
+ cron.schedule('30 01 * * *', function(){
    
    tweetaCardapio(almoço)
 
@@ -93,9 +93,9 @@ console.log('--------Twitando-------- ' + refeição+'\n----------------')
  function authorize(callback) {
   
   var authClient =  new google.auth.JWT(
-    keys.client_email,
+    process.env.CLIENT_EMAIL,
     null,
-    keys.private_key,
+    process.env.PRIVATE_KEY,
     ['https://www.googleapis.com/auth/drive.readonly']
       
   );
@@ -108,36 +108,3 @@ console.log('--------Twitando-------- ' + refeição+'\n----------------')
   callback(authClient);
   }
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* global.fetch = require("node-fetch");
-
-const bearer = 'Bearer' + '101295697652517477487'
-//headers.append('Content-Type', 'text/json');
-
-fetch( 'https://sheets.googleapis.com/v4/spreadsheets/1YvCqBrNw5l4EFNplmpRBFrFJpjl4EALlVNDk3pwp_dQ/values/UFRJ!C4%3AC18?key=adbf75254e3689ec4f60e7f4bcf050bbf74b5dd1' 
-, {method:'GET',
-        headers:{ 
-        'Authorization': bearer,
-        'Accept': 'application/json'
-      }
-        ,
-        
-       })
-.then(response => response.json())
-.then(json => console.log(json));
- */
