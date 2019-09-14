@@ -1,6 +1,6 @@
 var {google} = require('googleapis');
 const keys = require('./gcpconfig.json')
-
+require('dotenv').config();
 
 const dias = [
     'UFRJ!H4:H18', //domingo
