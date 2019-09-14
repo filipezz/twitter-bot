@@ -1,12 +1,5 @@
-
-
 var {google} = require('googleapis');
 const keys = require('./keys.json')
-
-
-
-
-
 
 
 const dias = [
@@ -21,15 +14,11 @@ const dias = [
     ]
    
   var d = new Date();
-  var n = d.getDay();
+  var n = d.getDay(); // dia da semana(0-6)
 
 
 
 authorize((authClient) => {
-
-  
-  
-
 
   const sheets = google.sheets({version: 'v4', authClient});
   
@@ -42,21 +31,25 @@ authorize((authClient) => {
   var response = String(res.data.values).split(',');
  
   
-
+  const diaSemana = [
+    'Domingo', 
+     'Segunda',
+    'Terça',
+    'Quarta',
+    'Quinta',
+    'Sexta',
+     'Sábado', 
+      ]
 
   var today = new Date();
   var date = today.getDate()+'/0'+(today.getMonth()+1)
 
   
-  var almoço = 'Almoço '+date+'\n\nEntrada: '+response[0]+'\n\nPrincipal: '+response[1]+'\n\nVeg: '+response[2]+'\n\nGuarnição: '+response[3]+'\n\nAcompanhamento: '+response[4]+'\n\nSobremesa: '+response[5]+'\n\nRefresco: '+response[6]
-  var janta = 'Janta '+date+'\n\nEntrada: '+response[8]+'\n\nPrincipal: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuarnição: '+response[11]+'\n\nAcompanhamento: '+response[12]+'\n\nSobremesa: '+response[13]+'\n\nRefresco: '+response[14]
-
-
+  var almoço = 'Almoço de '+diaSemana[n]+''+date+'\n\nEntrada: '+response[0]+'\n\nPrincipal: '+response[1]+'\n\nVeg: '+response[2]+'\n\nGuarnição: '+response[3]+'\n\nAcompanhamento: '+response[4]+'\n\nSobremesa: '+response[5]+'\n\nRefresco: '+response[6]
+  var janta = 'Janta de '+diaSemana[n]+''+date+'\n\nEntrada: '+response[8]+'\n\nPrincipal: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuarnição: '+response[11]+'\n\nAcompanhamento: '+response[12]+'\n\nSobremesa: '+response[13]+'\n\nRefresco: '+response[14]
 
 
   const Twit = require('twit')
-
-
 
 
  var T = new Twit({
@@ -78,33 +71,21 @@ console.log('--------Twitando-------- ' + refeição+'\n----------------')
 
  })}
  
-
-
  
-var schedule = require('node-schedule');
-
-var horaAlmoço = schedule.scheduleJob('30 9 * * *', function(){
-
-  tweetaCardapio(almoço)
+  var cron = require('node-cron');
+ 
+ cron.schedule('30 9 * * *', function(){
+   
+   tweetaCardapio(almoço)
 
 });
 
-var horaJanta = schedule.scheduleJob('0 16 * * *', function(){
+ cron.schedule('0 16 * * *', function(){
 
   tweetaCardapio(janta)
   
   });
-
-
-
-
-
-
-
-
-
-
-  
+ 
   });
 })
 
