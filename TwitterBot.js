@@ -74,7 +74,7 @@ console.log('--------Twitando-------- ' + refeição+'\n----------------')
  
   var cron = require('node-cron');
  
- cron.schedule('2,3 * * * *', function(){
+ cron.schedule('*/2 * * * *', function(){
    
    tweetaCardapio(almoço)
 
