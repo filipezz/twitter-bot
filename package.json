@@ -6,12 +6,13 @@
   },
   "description": "",
   "main": "index.js",
-  "scripts" : {
-    "preinstall" : "node setup.js"
-    },
+  "scripts": {
+    "preinstall": "node setup.js"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.1.0",
     "googleapis": "^39.2.0",
     "node-cron": "^2.0.3",
     "twit": "^2.2.11"
