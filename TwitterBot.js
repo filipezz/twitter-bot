@@ -28,7 +28,7 @@ authorize((authClient) => {
     auth: authClient
   }, (err, res) => { if (err)return console.log('The API returned an error: ' + err);
 
-  var response = String(res.data.values).split(',');
+  var response = res.data.values;
  
   
   const diaSemana = [
@@ -46,10 +46,10 @@ authorize((authClient) => {
 
   
   var almoço = 'Almoço de '+diaSemana[n]+' '+date+'\n\nEntrada: '+response[0]+'\n\nPrincipal: '+response[1]+'\n\nVeg: '+response[2]+'\n\nGuarnição: '+response[3]+'\n\nAcompanhamento: '+response[4]+'\n\nSobremesa: '+response[5]+'\n\nRefresco: '+response[6]
-  var janta = 'Janta de '+diaSemana[n]+' '+date+'\n\nEntrada: '+response[8]+'\n\nPrincipal: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuarnição: '+response[11]+'\n\nAcompanhamento: '+response[12]+'\n\nSobremesa: '+response[13]+'\n\nRefresco: '+response[14]
+  var jantar = 'Jantar de '+diaSemana[n]+' '+date+'\n\nEntrada: '+response[8]+'\n\nPrincipal: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuarnição: '+response[11]+'\n\nAcompanhamento: '+response[12]+'\n\nSobremesa: '+response[13]+'\n\nRefresco: '+response[14]
 
 
-const Twit = require('twit')
+ const Twit = require('twit')
 
 
  var T = new Twit({
@@ -75,7 +75,7 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
  
   var cron = require('node-cron');
  
- cron.schedule('39 10 * * *', function(){
+ cron.schedule('03 11 * * *', function(){
    
    tweetaCardapio(almoço)
 
@@ -89,7 +89,7 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
   
   },
   {timezone: "America/Sao_Paulo"});
- 
+  
   });
 })
 
