@@ -75,7 +75,7 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
  
   var cron = require('node-cron');
  
- cron.schedule('03 11 * * *', function(){
+ cron.schedule('0 10 * * *', function(){
    
    tweetaCardapio(almoço)
 
@@ -83,9 +83,9 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
 {timezone: "America/Sao_Paulo"}
 );
 
- cron.schedule('0 16 * * *', function(){
+ cron.schedule('30 16 * * *', function(){
 
-  tweetaCardapio(janta)
+  tweetaCardapio(jantar)
   
   },
   {timezone: "America/Sao_Paulo"});
