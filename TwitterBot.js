@@ -19,7 +19,7 @@ const dias = [
   var n = d.getDay(); // dia da semana(0-6)
 
 
-  cron.schedule('15 11 * * *', function(){
+  cron.schedule('00 11,16 * * *', function(){
    console.log('Iniciando...')
  authorize((authClient) => {
 
@@ -33,23 +33,13 @@ const dias = [
 
   var response = res.data.values;
  
-  
-  const diaSemana = [
-    'Domingo', 
-     'Segunda',
-    'Terça',
-    'Quarta',
-    'Quinta',
-    'Sexta',
-     'Sábado', 
-      ]
 
   var today = new Date();
   var date = today.getDate()+'/0'+(today.getMonth()+1)
 
   
-  var almoço = 'Almoço de '+diaSemana[n]+' '+date+'\n\nEntrada: '+response[0]+'\n\nPrincipal: '+response[1]+'\n\nVeg: '+response[2]+'\n\nGuarnição: '+response[3]+'\n\nAcompanhamento: '+response[4]+'\n\nSobremesa: '+response[5]+'\n\nRefresco: '+response[6]
-  var jantar = 'Jantar de '+diaSemana[n]+' '+date+'\n\nEntrada: '+response[8]+'\n\nPrincipal: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuarnição: '+response[11]+'\n\nAcompanhamento: '+response[12]+'\n\nSobremesa: '+response[13]+'\n\nRefresco: '+response[14]
+  var almoço = 'Almoço'+date+'\n\nEnt: '+response[0]+'\n\nPP: '+response[1]+'\n\nVeg: '+response[2]+'\n\nGuar: '+response[3]+'\n\nAcomp: '+response[4]+'\n\nSobr: '+response[5]+'\n\nRef: '+response[6]
+  var jantar = 'Jantar'+date+'\n\nEnt: '+response[8]+'\n\nPP: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuar: '+response[11]+'\n\nAcomp: '+response[12]+'\n\nSobr: '+response[13]+'\n\nRef: '+response[14]
 
 
  const Twit = require('twit')
