@@ -1,5 +1,7 @@
 var {google} = require('googleapis');
 const keys = require('./gcpconfig.json')
+var cron = require('node-cron');
+
 require('dotenv').config();
 
 const dias = [
@@ -17,8 +19,9 @@ const dias = [
   var n = d.getDay(); // dia da semana(0-6)
 
 
-
-authorize((authClient) => {
+  cron.schedule('15 11 * * *', function(){
+   console.log('Iniciando...')
+ authorize((authClient) => {
 
   const sheets = google.sheets({version: 'v4', authClient});
   
@@ -73,7 +76,6 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
  })}
  
  
-  var cron = require('node-cron');
  
  cron.schedule('0 10 * * *', function(){
    
@@ -92,6 +94,9 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
   
   });
 })
+ }
+ )
+
 
 
  function authorize(callback) {
