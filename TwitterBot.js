@@ -19,7 +19,7 @@ const dias = [
   var n = d.getDay(); // dia da semana(0-6)
 
 
-  cron.schedule('00 11,16 * * *', function(){
+  cron.schedule('00 9,16 * * *', function(){
    console.log('Iniciando...')
  authorize((authClient) => {
 
