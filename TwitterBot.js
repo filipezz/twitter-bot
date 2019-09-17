@@ -19,8 +19,7 @@ const dias = [
   var n = d.getDay(); // dia da semana(0-6)
 
 
-  cron.schedule('00 9,16 * * *', function(){
-   console.log('Iniciando...')
+  
  authorize((authClient) => {
 
   const sheets = google.sheets({version: 'v4', authClient});
@@ -38,8 +37,8 @@ const dias = [
   var date = today.getDate()+'/0'+(today.getMonth()+1)
 
   
-  var almoço = 'Almoço'+date+'\n\nEnt: '+response[0]+'\n\nPP: '+response[1]+'\n\nVeg: '+response[2]+'\n\nGuar: '+response[3]+'\n\nAcomp: '+response[4]+'\n\nSobr: '+response[5]+'\n\nRef: '+response[6]
-  var jantar = 'Jantar'+date+'\n\nEnt: '+response[8]+'\n\nPP: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuar: '+response[11]+'\n\nAcomp: '+response[12]+'\n\nSobr: '+response[13]+'\n\nRef: '+response[14]
+  var almoço = 'Almoço '+date+'\n\nEnt: '+response[0]+'\n\nPP: '+response[1]+'\n\nVeg: '+response[2]+'\n\nGuar: '+response[3]+'\n\nSobr: '+response[5]+'\n\nRef: '+response[6]
+  var jantar = 'Jantar '+date+'\n\nEnt: '+response[8]+'\n\nPP: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuar: '+response[11]+'\n\nSobr: '+response[13]+'\n\nRef: '+response[14]
 
 
  const Twit = require('twit')
@@ -84,10 +83,12 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
   
   });
 })
- }
- )
+ 
+ 
 
 
+cron.schedule('15 9,16 * * *', function(){
+  console.log('Iniciando...')
 
  function authorize(callback) {
   
@@ -106,4 +107,5 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
   }
   callback(authClient);
   }
- 
+ }
+)
