@@ -19,7 +19,9 @@ const dias = [
   var n = d.getDay(); // dia da semana(0-6)
 
 
-  
+  cron.schedule('20 9,16 * * *', function(){
+    console.log('Iniciando...')
+
  authorize((authClient) => {
 
   const sheets = google.sheets({version: 'v4', authClient});
@@ -83,12 +85,13 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
   
   });
 })
- 
- 
+ var almoço = []
+ var jantar = []
+  }
+)
 
 
-cron.schedule('15 9,16 * * *', function(){
-  console.log('Iniciando...')
+
 
  function authorize(callback) {
   
@@ -107,5 +110,3 @@ cron.schedule('15 9,16 * * *', function(){
   }
   callback(authClient);
   }
- }
-)
