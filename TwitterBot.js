@@ -19,7 +19,7 @@ const dias = [
   var n = d.getDay(); // dia da semana(0-6)
 
 
-  cron.schedule('25 10,16 * * *', function(){
+  cron.schedule('30 10,16 * * *', function(){
     console.log('Iniciando...')
 
  authorize((authClient) => {
@@ -68,7 +68,7 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
  
  
  
- cron.schedule('0 10 * * *', function(){
+ cron.schedule('31 10 * * *', function(){
    
    tweetaCardapio(almoço)
 
