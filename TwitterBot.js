@@ -76,7 +76,7 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
 {timezone: "America/Sao_Paulo"}
 );
 
- cron.schedule('30 16 * * *', function(){
+ cron.schedule('32 16 * * *', function(){
 
   tweetaCardapio(jantar)
   
