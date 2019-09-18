@@ -15,12 +15,13 @@ const dias = [
      
     ]
    
-  var d = new Date();
-  var n = d.getDay(); // dia da semana(0-6)
+    
+    
+    cron.schedule('20 10,16 * * *', function(){
+      console.log('Iniciando...')
 
-
-  cron.schedule('30 10,16 * * *', function(){
-    console.log('Iniciando...')
+      var d = new Date();
+      var n = d.getDay(); // dia da semana(0-6)
 
  authorize((authClient) => {
 
@@ -68,7 +69,7 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
  
  
  
- cron.schedule('31 10 * * *', function(){
+ cron.schedule('30 10 * * *', function(){
    
    tweetaCardapio(almoço)
 
@@ -76,7 +77,7 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
 {timezone: "America/Sao_Paulo"}
 );
 
- cron.schedule('32 16 * * *', function(){
+ cron.schedule('30 16 * * *', function(){
 
   tweetaCardapio(jantar)
   
@@ -85,14 +86,6 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
   
   });
 })
- var almoço = []
- var jantar = []
-  }
-)
-
-
-
-
  function authorize(callback) {
   
   var authClient =  new google.auth.JWT(
@@ -110,3 +103,5 @@ console.log('--------Twitando--------\n ' + refeição+'\n----------------')
   }
   callback(authClient);
   }
+ }
+)
