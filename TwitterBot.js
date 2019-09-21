@@ -17,11 +17,13 @@ const dias = [
    
     
     
-    cron.schedule('20 10,16 * * *', function(){
+    cron.schedule('30 10,16 * * *', function(){
       console.log('Iniciando...')
 
-      var d = new Date();
-      var n = d.getDay(); // dia da semana(0-6)
+    var today = new Date();
+    var date = today.getDate()+'/0'+(today.getMonth()+1)  //data dd/mm
+    var n = today.getDay(); // dia da semana(0-6)
+    var hours = today.getHours(); // hora do dia
 
  authorize((authClient) => {
 
@@ -35,19 +37,30 @@ const dias = [
 
   var response = res.data.values;
  
-
-  var today = new Date();
-  var date = today.getDate()+'/0'+(today.getMonth()+1)
-
-  
-  var almoço = 'Almoço '+date+'\n\nEnt: '+response[0]+'\n\nPP: '+response[1]+'\n\nVeg: '+response[2]+'\n\nGuar: '+response[3]+'\n\nSobr: '+response[5]+'\n\nRef: '+response[6]
-  var jantar = 'Jantar '+date+'\n\nEnt: '+response[8]+'\n\nPP: '+response[9]+'\n\nVeg: '+response[10]+'\n\nGuar: '+response[11]+'\n\nSobr: '+response[13]+'\n\nRef: '+response[14]
+  var almoço = `Almoço ${date}\n\nEnt: ${response[0]}\n\nPP: ${response[1]}\n\nVeg: ${response[2]}\n\nGuar: ${response[3]}\n\nSobr: ${response[5]}\n\nRef: ${response[6]}`
+  var jantar = `Almoço ${date}\n\nEnt: ${response[8]}\n\nPP: ${response[9]}\n\nVeg: ${response[10]}\n\nGuar: ${response[11]}\n\nSobr: ${response[13]}\n\nRef: ${response[14]}`
 
 
- const Twit = require('twit')
+
+ if (hours== 10){
+
+   console.log(hours)
+   tweetaCardapio(almoço)
+ }
+ if(hours == 16){
+
+  console.log(hours)
+   tweetaCardapio(jantar)
+ }
 
 
- var T = new Twit({
+ 
+ 
+ 
+ function tweetaCardapio(refeição){
+
+  const Twit = require('twit')
+  var T = new Twit({
    
    consumer_key:         keys.twitter_consumer_key,
    consumer_secret:      keys.twitter_consumer_secret,
@@ -56,34 +69,16 @@ const dias = [
    timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
    strictSSL:            true,     // optional - requires SSL certificates to be valid.
  })
- 
- function tweetaCardapio(refeição){
+  
  T.post('statuses/update', { status: refeição}, function(err, data, res) {
 if(err){
-  console.log(err)
-  return
+  
+  return console.log(err)
 }
 console.log('--------Twitando--------\n ' + refeição+'\n----------------')
 
  })}
  
- 
- 
- cron.schedule('30 10 * * *', function(){
-   
-   tweetaCardapio(almoço)
-
-},
-{timezone: "America/Sao_Paulo"}
-);
-
- cron.schedule('30 16 * * *', function(){
-
-  tweetaCardapio(jantar)
-  
-  },
-  {timezone: "America/Sao_Paulo"});
-  
   });
 })
  function authorize(callback) {
