@@ -62,12 +62,11 @@ const dias = [
   const Twit = require('twit')
   var T = new Twit({
    
-   consumer_key:         keys.twitter_consumer_key,
-   consumer_secret:      keys.twitter_consumer_secret,
-   access_token:         keys.twitter_access_token,
-   access_token_secret:  keys.twitter_access_token_secret,
-   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
-   strictSSL:            true,     // optional - requires SSL certificates to be valid.
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token: process.env.ACCESS_TOKEN,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+  timeout_ms: 60 * 1000 // optional HTTP request timeout to apply to all requests.
  })
   
  T.post('statuses/update', { status: refeição}, function(err, data, res) {
