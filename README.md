@@ -37,7 +37,7 @@ Após a criação da conta, é preciso criar projeto e vincular a Api utilizada 
 
 ![image](https://user-images.githubusercontent.com/34013325/55571155-52e3d400-56db-11e9-998f-bd99ab647403.png)
 
-de um nome ao projeto e clique no botão **criar** e em seguida, selecione-o.
+dê um nome ao projeto e clique no botão **criar** e em seguida, selecione-o.
 
 
 
@@ -146,6 +146,6 @@ Ele cria um arquivo de credenciais com as suas credenciais do Google. Para isso,
 
 Em `GCP_CRED` cole o JSON baixado com suas credenciais **Google**. E em `GCP_KEY_FILE` ponha "./gcpconfig.json", que é o caminho onde suas credenciais serão criadas dentro do servidor.
 
->PS: A variável TZ significa "Timezone". E configura o fuso do seu servidor que por padrão no Heroku é o UTC
+>PS: A variável TZ significa "Timezone". Ele configura o fuso do seu servidor que por padrão no Heroku é o UTC
 
 # E pronto! 
