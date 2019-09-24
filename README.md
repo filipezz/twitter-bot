@@ -106,21 +106,30 @@ Escolha o Github como método de deployment e clique em conectar
 
 ![](https://cdn-images-1.medium.com/max/2000/1*QETgzVnscTLIxuD9XFEV5g.png)
 
+
 Selecione o nome do seu repositório
 
-![](https://cdn-images-1.medium.com/max/2000/1*nX4Zcbm77GVLmu9s7NWwSQ.png)
+
+![image](https://user-images.githubusercontent.com/52511902/65473469-3cc6fd00-de4e-11e9-901d-8f5e529d8446.png)
+
 
 Agora é preciso configurar suas credenciais em Config Vars
 
-![](https://cdn-images-1.medium.com/max/2000/1*VJgHnF6orcT1PGvyi_JxHA.png)
+
+![image](https://user-images.githubusercontent.com/52511902/65473347-c75b2c80-de4d-11e9-96b6-c66e54e97216.png)
+
 
 Selecione `deploy branch` para subir o seu bot pela primeira vez
 
+
 ![image](https://user-images.githubusercontent.com/52511902/65473051-9dedd100-de4c-11e9-8915-62ba9a7d934f.png)
+
 
 Vá na aba `resources` e ative o modo `worker dyno`.
 
-![](https://cdn-images-1.medium.com/max/2000/1*rBSbnSWgrV0d0_lHh38JkQ.png)
+
+![image](https://user-images.githubusercontent.com/52511902/65473391-00939c80-de4e-11e9-9ff9-23227f322dfd.png)
+
 
 >PS: É possível ver os logs da sua aplicação indo em  `more` e depois `view logs`.
 
