@@ -21,7 +21,7 @@ const dias = [
       console.log('Iniciando...')
 
     var today = new Date();
-    var date = today.getDate()+'/0'+(today.getMonth()+1)  //data dd/mm
+    var date = today.getDate()+'/'+(today.getMonth()+1)  //data dd/mm
     var n = today.getDay(); // dia da semana(0-6)
     var hours = today.getHours(); // hora do dia
 
