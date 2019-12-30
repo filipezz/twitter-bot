@@ -19,12 +19,21 @@ const dias = [
     
     cron.schedule('30 10,16 * * *', function(){
       console.log('Iniciando...')
-
+        
+   
     var today = new Date();
-    var date = today.getDate()+'/'+(today.getMonth()+1)  //data dd/mm
+    var month = today.getMonth()+1
+    
+    var date = function checkMonth(){   //data dd/mm
+    if (month<9){
+       return date = today.getDate()+'/0'+month
+    }else{
+      return  date = today.getDate()+'/'+month
+    }}  
+    
     var n = today.getDay(); // dia da semana(0-6)
     var hours = today.getHours(); // hora do dia
-
+ 
  authorize((authClient) => {
 
   const sheets = google.sheets({version: 'v4', authClient});
