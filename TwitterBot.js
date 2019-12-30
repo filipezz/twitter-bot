@@ -29,7 +29,7 @@ const dias = [
        return date = today.getDate()+'/0'+month
     }else{
       return  date = today.getDate()+'/'+month
-    }}  
+    }}()
     
     var n = today.getDay(); // dia da semana(0-6)
     var hours = today.getHours(); // hora do dia
