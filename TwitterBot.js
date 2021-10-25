@@ -46,8 +46,8 @@ const dias = [
 
   var response = res.data.values;
  
-  var almoço = `Almoço ${date}\n\nEnt: ${response[0]}\n\nPP: ${response[1]}\n\nVeg: ${response[2]}\n\nGuar: ${response[3]}\n\nSobr: ${response[5]}\n\nRef: ${response[6]}`
-  var jantar = `Jantar ${date}\n\nEnt: ${response[8]}\n\nPP: ${response[9]}\n\nVeg: ${response[10]}\n\nGuar: ${response[11]}\n\nSobr: ${response[13]}\n\nRef: ${response[14]}`
+  var almoço = `Almoço ${date}\n\nGuar1: ${response[0]}\n\nGuar2: ${response[1]}\n\nPP: ${response[2]}\n\nAcomp: ${response[3]}\n\nSobr: ${response[5]}}`
+  var jantar = `Jantar ${date}\n\nGuar1: ${response[8]}\n\nGuar2: ${response[9]}\n\nPP: ${response[10]}\n\nAcomp: ${response[11]}\n\nSobr: ${response[13]}}`
 
 
 
